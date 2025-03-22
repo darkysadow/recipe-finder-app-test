@@ -1,4 +1,19 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+
+export interface ReceiptListItemInterface {
+  id: number;
+  title: string;
+  image: string;
+  imageType: string;
+}
+
+export interface ResponseReceiptsInterface {
+  results: ReceiptListItemInterface[] | [];
+  offset: number;
+  number: number;
+  totalResults: number;
+}
+
 export interface SingleRecipe {
   id: number;
   image: string;

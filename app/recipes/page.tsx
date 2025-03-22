@@ -4,20 +4,7 @@ import EmptyResponse from "@/components/recipes/EmptyResponse";
 import Pagination from "@/components/recipes/Pagination";
 import RecipesImage from "@/components/recipes/RecipesImage";
 import Link from "next/link";
-
-interface ReceiptListItemInterface {
-  id: number;
-  title: string;
-  image: string;
-  imageType: string;
-}
-
-interface ResponseReceiptsInterface {
-  results: ReceiptListItemInterface[] | [];
-  offset: number;
-  number: number;
-  totalResults: number;
-}
+import { ResponseReceiptsInterface } from "../types";
 
 export default async function Recipes({
   searchParams,
