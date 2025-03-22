@@ -1,16 +1,6 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -25,9 +15,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className="antialiased font-lato"
       >
-        {children}
+        <header className="flex items-center justify-center p-6 border-b border-tertinary">
+          <Link href='/' className="font-boldonse tracking-wide text-secondary text-center">RecipeFinderApp</Link>
+        </header>
+        <main>
+          {children}
+        </main>
       </body>
     </html>
   );
