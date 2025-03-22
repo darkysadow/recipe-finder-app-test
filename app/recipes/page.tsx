@@ -6,10 +6,12 @@ import RecipesImage from "@/components/recipes/RecipesImage";
 import Link from "next/link";
 import { ResponseReceiptsInterface } from "../types";
 
+type tParams = Promise<{ [key: string]: string }>
+
 export default async function Recipes({
   searchParams,
 }: {
-  searchParams: { [key: string]: string };
+  searchParams: tParams;
 }) {
   const {
     query = "",

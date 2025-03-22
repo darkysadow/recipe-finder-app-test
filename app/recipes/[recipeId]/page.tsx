@@ -1,16 +1,11 @@
 import { SingleRecipe } from "@/app/types";
 import RecipesImage from "@/components/recipes/RecipesImage";
 
-export default async function Recipes({
-  params,
-}: {
-  params: { recipeId: string };
-}) {
-  const { recipeId } = await params;
+type RecipePageProps = Promise<{recipeId: string;}>
 
-  if (!recipeId) {
-    return <p>Loading...</p>;
-  }
+const RecipesSingle = async (props: { params: RecipePageProps }) => {
+    const awaitedParams = await props.params;
+    const { recipeId } = awaitedParams;
 
   const apiKey = process.env.SPOONACULAR_API_KEY;
 
@@ -27,7 +22,7 @@ export default async function Recipes({
     }
   }
 
-  const data: SingleRecipe = await getRecipe(recipeId);
+  const data: SingleRecipe | null = await getRecipe(recipeId);
 
   if (!data) {
     return <p>Failed to load recipe.</p>;
@@ -160,4 +155,6 @@ export default async function Recipes({
       )}
     </section>
   );
-}
+};
+
+export default RecipesSingle;
