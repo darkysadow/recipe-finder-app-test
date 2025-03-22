@@ -15,7 +15,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className="antialiased font-lato"
+        className="antialiased font-lato overflow-x-clip"
       >
         <header className="flex items-center justify-center p-6 border-b border-tertinary">
           <Link href='/' className="font-boldonse tracking-wide text-secondary text-center">RecipeFinderApp</Link>
