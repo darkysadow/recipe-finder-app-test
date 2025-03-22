@@ -2,7 +2,7 @@
 
 import EmptyResponse from "@/components/recipes/EmptyResponse";
 import Pagination from "@/components/recipes/Pagination";
-import Image from "next/image";
+import RecipesImage from "@/components/recipes/RecipesImage";
 import Link from "next/link";
 
 interface ReceiptListItemInterface {
@@ -40,7 +40,6 @@ export default async function Recipes({
   const baseLink = `/recipes?preparationTime=${maxReadyTime}&cuisine=${cuisine}&query=${query}`;
 
   const posts: ResponseReceiptsInterface = await data.json();
-  console.log(posts);
 
   const { number, offset, results, totalResults } = posts;
 
@@ -65,12 +64,7 @@ export default async function Recipes({
                   className="flex flex-col gap-3 hover:[&>p]:decoration-secondary"
                 >
                   <figure className="w-full h-[190px] relative overflow-hidden rounded-2xl">
-                    <Image
-                      src={item.image}
-                      alt={item.title}
-                      fill
-                      className="absolute object-cover object-center"
-                    />
+                    <RecipesImage key={item.image} image={item.image} title={item.title} />
                   </figure>
                   <p className="transition duration-200 hover:transition hover:duration-200 underline decoration-transparent underline-offset-2">
                     {item.title}
