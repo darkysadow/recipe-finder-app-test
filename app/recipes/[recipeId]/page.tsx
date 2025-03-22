@@ -62,7 +62,7 @@ const RecipesSingle = async (props: { params: RecipePageProps }) => {
             </div>
           </div>
         </div>
-        <figure className="w-full h-full aspect-square relative flex justify-end">
+        <figure className="w-full aspect-square overflow-hidden relative flex justify-end">
           <RecipesImage image={data.image} title={data.title} />
         </figure>
       </div>
