@@ -12,7 +12,10 @@ import { Input } from "@/components/ui/input";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 
+import { useRouter } from 'next/navigation'
+
 export default function Home() {
+  const router = useRouter()
   const cuisine: string[] = [
     "Asian",
     "American",
@@ -30,7 +33,10 @@ export default function Home() {
   >();
   const [recipeInputValue, setRecipeInputValue] = useState<string | "">("");
 
-  const isButtonDisabled = maxPreparationTime === "" && !cuisineSelectValue && recipeInputValue.length === 0
+  const isButtonDisabled =
+    maxPreparationTime === "" &&
+    !cuisineSelectValue &&
+    recipeInputValue.length === 0;
 
   const handleMaxPreparationTimeInput = (value: string | "") => {
     if (value === "") {
@@ -43,8 +49,12 @@ export default function Home() {
       setMaxPreparationTime(numberValue);
     }
   };
+
+  const handleNavigate = () => {
+    router.push(`/recipes?preparationTime=${maxPreparationTime ?? 60}&cuisine=${cuisineSelectValue ?? "Eastern European"}&query=${recipeInputValue ?? ""}`)
+  }
   return (
-    <section className="max-w-550 max-sm:px-3 mx-auto py-10 flex flex-col gap-5 items-center [&>div>label]:flex [&>div>label]:flex-col [&>div>label]:gap-1">
+    <section className="max-w-550 mx-auto flex flex-col gap-5 items-center [&>div>label]:flex [&>div>label]:flex-col [&>div>label]:gap-1">
       <div className="w-full grid max-sm:grid-cols-1 sm:grid-cols-2 gap-5">
         <label>
           <p>Select a cuisine</p>
@@ -96,7 +106,13 @@ export default function Home() {
         </label>
       </div>
       <div className="w-full mt-4">
-        <Button className="w-full" disabled={isButtonDisabled}>Next</Button>
+        <Button
+          className="w-full"
+          disabled={isButtonDisabled}
+          onClick={() => handleNavigate()}
+        >
+          Next
+        </Button>
       </div>
     </section>
   );

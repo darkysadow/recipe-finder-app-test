@@ -83,6 +83,7 @@
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
   --spacing-550: 550px;
+  --spacing-1024: 1024px;
 }
 
 .dark {

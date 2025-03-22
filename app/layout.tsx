@@ -20,7 +20,7 @@ export default function RootLayout({
         <header className="flex items-center justify-center p-6 border-b border-tertinary">
           <Link href='/' className="font-boldonse tracking-wide text-secondary text-center">RecipeFinderApp</Link>
         </header>
-        <main>
+        <main className="max-sm:px-3 py-10">
           {children}
         </main>
       </body>
